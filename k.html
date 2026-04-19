@@ -10,12 +10,12 @@
 
 <body>
     <header>
-        <h1>Анастасия</h1>
+        <h1>Анастасия Воронова</h1>
         <p>
         <p>2D / 3D художник</p>
         <nav>
-            <a href="#gallery2d">2D работы</a>
-            <a href="#gallery3d">3D работы</a>
+            <a href="#gallery2d">2D работы с использованием 3D</a>
+            <a href="#books">Иллюстрация и верстка книг</a>
             <a href="#contacts">Контакты</a>
         </nav>
     </header>
@@ -23,20 +23,46 @@
     <main>
         <section class="hero">
             <h2>Привет! Я художник</h2>
-            <p>Рисую в 2D, моделирую в 3D. Добро пожаловать в моё портфолио.
+            <p>Я моделирую в 3D, я затем делаю рендер в 2D. А также имею опыт работы с иллюстрированием и версткой книг.
+                Добро пожаловать в моё портфолио.
             <section id="gallery2d" class="gallery">
-                <h2>2D работы</h2>
+                <h2>2D работы с использованием 3D</h2>
                 <div class="gallery-grid">
-                    <!--Картинки-->
-                </div>
-            </section>
-            <section id="gallery3d" class="gallery">
-                <h2>3D работы</h2>
-                <div class="gallery-grid">
-                    <!--Картинки-->
+                    <img src="images/house inside.jpg " alt="2D работа 1">
+                    <img src="images/house.jpg" alt="2D работа 2">
+                    <img src="images/mashroom.jpg" alt="2D работа 3">
+                    <img src="images/tree.jpg" alt="2D работа 4">
                 </div>
             </section>
             <section id="contacts" class="contacts">
+
+
+                <!--мои сказки-->
+                <section id="books" class="books">
+                    <h2>Работа с версткой и иллюстрациями для сказок авторства Натальи Юрьевны Фершуковой</h2>
+                    <div class="books-grid">
+                        <div class="book-card" data-book="1">
+                            <img src="images/Светлячок1.jpg" alt="Обложка книги 1">
+                            <h3>О Светлячке, его маленьком фонарике и большой душе</h3>
+                        </div>
+                        <div class="book-card" data-book="2">
+                            <img src="images/Листик2.jpg" alt="Обложка книги 2">
+                            <h3>Путешествие Листика</h3>
+                        </div>
+                        <div class="book-card" data-book="3">
+                            <img src="images/Лови момент3.jpg" alt="Обложка книги 3">
+                            <h3>Лови момент — раскраска-антистресс</h3>
+                        </div>
+                        <div class="book-card" data-book="4">
+                            <img src="images/Розовый куст и амфора4.png" alt="Обложка книги 4">
+                            <h3>Розовый куст и амфора</h3>
+                        </div>
+                        <div class="book-card" data-book="5">
+                            <img src="images/В процессе5.jpg" alt="Обложка книги 5">
+                            <h3>Сказка о любви</h3>
+                        </div>
+                    </div>
+                </section>
                 <h2>Контакты</h2>
                 <p>Email: nastya.voronova.2016@mail.ru</p>
                 <p>Telegram: @Anastasia_a14</p>
@@ -44,8 +70,113 @@
     </main>
 
     <footer>
-        <p>© 2026 Анастасия. Все права защищены.</p>
+        <p>© 2026 Анастасия Воронова. Все права защищены.</p>
     </footer>
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-img" src="" alt="Увеличенное изображение">
+        </div>
+    </div>
+
+    <!--ДЖАВА-->
+    <script>
+        //Находим все картинки в галерее
+        const images = document.querySelectorAll('.gallery-grid img');
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.querySelector('.close');
+
+        //При клике на картинку — открываем окно
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        // При клике на крестик или фон — закрываем
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!--окошко для описания книги -->
+    <div id="bookModal" class="book-modal">
+        <div class="book-modal-content">
+            <span class="book-close">&times;</span>
+            <div class="book-modal-body">
+                <img id="bookCover" src="" alt="Обложка">
+                <div class="book-info">
+                    <h2 id="bookTitle"></h2>
+                    <p id="bookDescription"></p>
+                    <h4>Иллюстрации из книги:</h4>
+                    <div class="book-illustrations" id="bookIllustrations"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // ДАННЫЕ О КНИГАХ — ЗАМЕНИ НА СВОИ
+        const books = {
+            1: {
+                title: "О Светлячке, его маленьком фонарике и большой душе",
+                desc: "Добрая сказка о маленьком светлячке, который помог потерявшемуся мальчику и обрел друга.",
+                cover: "images/Светлячок1.jpg"
+            },
+            2: {
+                title: "Путешествие Листика",
+                desc: "Приключения осеннего листика, который отправился в увлекательное путешествие и нашел себя.",
+                cover: "images/Листик2.jpg"
+            },
+            3: {
+                title: "Лови момент — раскраска-антистресс",
+                desc: "Книга-раскраска для взрослых и детей с красивыми иллюстрациями, помогающая снять стресс.",
+                cover: "images/Лови момент3.jpg"
+            },
+            4: {
+                title: "Розовый куст и амфора",
+                desc: "Поэтическая история о красоте, времени и вечных ценностях.",
+                cover: "images/Розовый куст и амфора4.png"
+            },
+            5: {
+                title: "Сказка о любви",
+                desc: "Сказка о девушке которая узнает что такое любовь.",
+                cover: "images/В процессе5.jpg"
+            }
+        };
+
+        // ЭТОТ КОД НЕ ТРОГАть -ОН РАБОТАЕТ
+        document.querySelectorAll('.book-card').forEach(card => {
+            card.onclick = () => {
+                let id = card.getAttribute('data-book');
+                document.getElementById('bookTitle').innerText = books[id].title;
+                document.getElementById('bookDescription').innerText = books[id].desc;
+                document.getElementById('bookCover').src = books[id].cover;
+                document.getElementById('bookModal').style.display = 'flex';
+            }
+        });
+
+        document.querySelector('.book-close').onclick = () => {
+            document.getElementById('bookModal').style.display = 'none';
+        };
+
+        document.getElementById('bookModal').onclick = (e) => {
+            if (e.target === document.getElementById('bookModal')) {
+                document.getElementById('bookModal').style.display = 'none';
+            }
+        };
+    </script>
 </body>
 
 </html>
