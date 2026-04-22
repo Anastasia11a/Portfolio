@@ -1,74 +1,122 @@
-/* Базовые стили */
+/* базовые стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(252, 248, 242);
     color: rgb(30, 30, 30);
     line-height: 1.6;
 }
 
-/* Шапка */
+/* лёгкое затемнение поверх тела (если нужно, но пока не используется) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(245, 235, 225, 0.853);
+    z-index: -1;
+}
+
+/* шапка моё фото на всю ширину */
 header {
-    background-color: rgb(200, 120, 150);
+    background-image: url("images/me.jpg");
+    background-size: cover;
+    background-position: center 30%;
     color: white;
-    padding: 40px 20px;
+    padding: 120px 20px 180px 20px;
     text-align: center;
+    position: relative;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.35);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* затемнение поверх фото, чтобы белый текст читался норм */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* текст в шапке — поверх затемнения */
+header h1,
+header p,
+header nav {
+    position: relative;
+    z-index: 1;
+}
+
+/* моё имя  */
 header h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+    font-size: 56px;
+    margin-top: 60px;
+    margin-bottom: 15px;
 }
 
+/* подпись под именем */
 header p {
-    font-size: 20px;
-    opacity: 0.9;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-/* Навигация */
+/* навигация - чуть ниже, чтобы не сливалось */
 nav {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
+/* ссылки в навигации - белые, без подчёркивания, с плавным эффектом */
 nav a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
-    font-size: 18px;
+    font-size: 20px;
     transition: 0.3s;
 }
 
+/* при наведении на ссылку -появляется подчёркивание и лёгкая прозрачность */
 nav a:hover {
     text-decoration: underline;
     opacity: 0.7;
 }
 
-/* Блок приветствия */
+/* приветственный блок - нежный, чтобы встретить гостя */
 .hero {
-    background-color: rgb(240, 220, 230);
+    background-color: rgb(250, 242, 235);
     text-align: center;
     padding: 60px 20px;
     margin-bottom: 40px;
 }
 
+/* заголовок в приветствии - тёплого оттенка, как кофе с молоком */
 .hero h2 {
     font-size: 36px;
-    color: rgb(200, 120, 150);
+    color: rgb(160, 100, 60);
     margin-bottom: 15px;
 }
 
+/* текст приветствия -не слишком широкий, чтобы удобно читалось */
 .hero p {
     font-size: 18px;
     max-width: 600px;
     margin: 0 auto;
 }
 
-/* Галереи */
+/* галерея -основное место для моих работ */
 .gallery {
     padding: 20px;
     max-width: 1200px;
@@ -76,22 +124,22 @@ nav a:hover {
     margin-bottom: 40px;
 }
 
+/* заголовки галереи-такие же тёплые, как в приветствии */
 .gallery h2 {
     text-align: center;
-    color: rgb(200, 120, 150);
+    color: rgb(160, 100, 60);
     margin-bottom: 30px;
     font-size: 32px;
 }
 
-/* ссетка для картинок */
+/* сетка для картинок-сама подстраивается под ширину экрана */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-/* стили для картинок */
-
+/* сами картинки - одинаковой высоты, с закруглёнными углами */
 .gallery-grid img {
     width: 100%;
     height: 250px;
@@ -101,18 +149,18 @@ nav a:hover {
     cursor: pointer;
 }
 
-/*при наведении картинка увеличивается и показывается целиком */
+/* при наведении картинка увеличивается и показывается целиком, как лупа */
 .gallery-grid img:hover {
     transform: scale(1.2);
     object-fit: contain;
-    background-color: rgb(200, 120, 150);
+    background-color: rgb(193, 153, 109);
     z-index: 10;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/*Контакты*/
+/* блок контактов - тёплый, чтобы хотелось написать */
 .contacts {
-    background-color: rgb(200, 120, 150);
+    background-color: rgb(193, 153, 109);
     color: white;
     text-align: center;
     padding: 40px 20px;
@@ -128,7 +176,7 @@ nav a:hover {
     margin: 10px 0;
 }
 
-/* Подвал */
+/* подвал - тёмный, спокойный, не отвлекает */
 footer {
     background-color: rgb(30, 30, 30);
     color: white;
@@ -137,7 +185,210 @@ footer {
     font-size: 14px;
 }
 
-/*аддаптивность для телефонов*/
+/* блок с книгами -отдельная гордость, поэтому фон чуть отличается */
+.books {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    background-color: rgb(250, 242, 235);
+    border-radius: 20px;
+}
+
+.books h2 {
+    text-align: center;
+    color: rgb(160, 100, 60);
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+/* сетка для карточек книг- тоже адаптивная */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+/* карточка книги - белая, с тенью, приятная на вид */
+.book-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgb(190, 130, 90);
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+/* при наведении на книгу - приподнимается, будто её можно взять */
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(156, 98, 59, 0.2);
+}
+
+/* обложка книги- ровно вписывается в карточку */
+.book-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* название книги -мягкого тёплого оттенка */
+.book-card h3 {
+    margin: 15px 0 5px;
+    color: rgb(116, 81, 67);
+    font-size: 18px;
+}
+
+/* модальное окно для картинок - затемняет всё, фокус на картинке */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* белое окошко для картинки почти невидимое, главное - сама картинка */
+.modal-content {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* картинка внутри модального окна- большая, но влезает */
+.modal-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* крестик закрытия- заметный, но не кричащий */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+/* при наведении на крестик--становится тёплым */
+.close:hover {
+    color: rgb(192, 130, 89);
+}
+
+/* модальное окно для книг-похоже на галерейное, но своё */
+.book-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+/* контент внутри книжного окошка - белый, читабельный */
+.book-modal-content {
+    background-color: white;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* крестик для книжного окошка */
+.book-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    z-index: 10;
+}
+
+.book-close:hover {
+    color: rgb(200, 120, 150);
+}
+
+/* внутри книжного окошка -бложка слева, текст справа */
+.book-modal-body {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* обложка в окошке -аккуратного размера */
+.book-modal-body>img:first-child {
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* текстовая часть в окошке */
+.book-info {
+    flex: 1;
+}
+
+/* заголовок книги в окошке- тёплый, как и везде */
+.book-info h2 {
+    color: rgb(215, 154, 113);
+    margin-bottom: 15px;
+}
+
+/* описание книги */
+.book-info p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* миниатюры иллюстраций-рядком, чтобы было видно, что внутри */
+.book-illustrations {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* каждая миниатюра-квадратная, с закруглениями */
+.book-illustrations img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* при наведении на миниатюру -чуть увеличивается */
+.book-illustrations img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* адаптивность для телефонов -чтобы на маленьком экране не разваливалось */
 @media (max-width: 768px) {
     header h1 {
         font-size: 32px;
@@ -155,200 +406,7 @@ footer {
         display: inline-block;
         margin: 5px 10px;
     }
-}
 
-/*Модальное окно */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/*белое окошко */
-.modal-content {
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 90%;
-    max-height: 90%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* ккартинка внутри окошка */
-.modal-content img {
-    max-width: 100%;
-    max-height: 80vh;
-    border-radius: 10px;
-    display: block;
-    margin: 0 auto;
-}
-
-/*крестик закрытия */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
-}
-
-.close:hover {
-    color: rgb(200, 120, 150);
-}
-
-
-/* БЛОК С КНИГАММИ */
-.books {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 40px;
-    background-color: rgb(250, 245, 240);
-    border-radius: 20px;
-}
-
-.books h2 {
-    text-align: center;
-    color: rgb(200, 120, 150);
-    margin-bottom: 30px;
-    font-size: 32px;
-}
-
-/* Сетка для карточек книг */
-.books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-}
-
-/* Карточка книги */
-.book-card {
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: 0.3s;
-    text-align: center;
-    padding-bottom: 15px;
-}
-
-.book-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.book-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.book-card h3 {
-    margin: 15px 0 5px;
-    color: rgb(200, 120, 150);
-    font-size: 18px;
-}
-
-/* Окошко для книг */
-.book-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1001;
-}
-
-.book-modal-content {
-    background-color: white;
-    border-radius: 20px;
-    max-width: 900px;
-    width: 90%;
-    max-height: 90%;
-    overflow-y: auto;
-    padding: 20px;
-    position: relative;
-}
-
-.book-close {
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
-    z-index: 10;
-}
-
-.book-close:hover {
-    color: rgb(200, 120, 150);
-}
-
-.book-modal-body {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.book-modal-body>img:first-child {
-    width: 200px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.book-info {
-    flex: 1;
-}
-
-.book-info h2 {
-    color: rgb(200, 120, 150);
-    margin-bottom: 15px;
-}
-
-.book-info p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.book-illustrations {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-.book-illustrations img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.book-illustrations img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Адаптив для окошка книг */
-@media (max-width: 768px) {
     .book-modal-body {
         flex-direction: column;
         align-items: center;
