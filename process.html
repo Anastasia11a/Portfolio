@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Процесс создания работы — портфолио Анастасии Вороновой</title>
+    <link rel="stylesheet" href="ks.css">
+</head>
+
+<body>
+    <header>
+        <h1>Процесс создания работы</h1>
+        <p>от скетча до финальной картинки</p>
+        <nav>
+            <a href="index.html">Портфолио</a>
+            <a href="process.html">Как это сделано</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- краткое введение — что тут вообще происходит -->
+        <section class="process-intro">
+            <h2>Как создаётся работа</h2>
+            <p>Каждое изображение в портфолио проходит несколько этапов: от идеи и скетча до финальной обработки в
+                Photoshop. Ниже показан процесс создания одной из работ.</p>
+        </section>
+
+        <section class="process-steps">
+            <!-- этап 1 — с чего всё начинается -->
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Поиск идеи</h3>
+                    <p>Работа начинается с рисунка от руки. В дальнейшем набросок переносится в Blender, где создаётся
+                        базовая
+                        3D-болванка — основа будущей модели.</p>
+                    <img src="images/1.jpg" alt="Скетч и перенос в 3D">
+                </div>
+            </div>
+
+            <!-- этап 2 — болванка в блендер -->
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Болванка в Blender</h3>
+                    <p>В Blender прорабатываются объём и детали (скульптинг), настраиваются источники света.</p>
+                    <img src="images/2.png" alt="Детализация, свет и цвет">
+                </div>
+            </div>
+
+            <!-- этап 3 —  цвет в фотошопе -->
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Задаем цвет в Photoshop</h3>
+                    <p>После того как мы сделали болванку в Blender и выставили свет, можно задать цвета. Делать это
+                        можно как в Blender, так и в Adobe Photoshop.В Photoshop задаётся основная
+                        цветовая гамма работы.</p>
+                    <img src="images/3.jpg" alt="Рендер PNG и цвет в Photoshop">
+                </div>
+            </div>
+
+            <!-- этап 4 — финал -->
+            <div class="step">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>Финальная отрисовка в Photoshop</h3>
+                    <p>Рендер дорабатывается вручную: уточняются детали, добавляются текстуры, выполняется
+                        цветокоррекция и рендер материалов.</p>
+                    <img src="images/4.jpg" alt="Финальная отрисовка в Photoshop">
+                </div>
+            </div>
+        </section>
+
+        <!-- ссылка назад, чтобы не заблудиться -->
+        <div class="back-link">
+            <a href="index.html">← Вернуться в портфолио</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 Анастасия Воронова. Все права защищены.</p>
+    </footer>
+
+    <!-- модальное окно для увеличения картинок — то же, что на главной -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-img" src="" alt="Увеличенное изображение">
+        </div>
+    </div>
+
+    <!-- джава для открытия картинок по клику -->
+    <script>
+        // находим все картинки внутри шагов
+        const images = document.querySelectorAll('.step-content img');
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.querySelector('.close');
+
+        // по клику на картинку — открываем
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+
+        // закрытие по крестику
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // закрытие по клику на фон
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
