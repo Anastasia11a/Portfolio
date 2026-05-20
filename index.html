@@ -22,85 +22,120 @@
 
     <main>
         <section class="hero">
-            <h2>Привет! Я художник!</h2>
-            <p>Я моделирую в 3D, я затем делаю рендер в 2D. А также имею опыт работы с иллюстрированием и версткой книг.
-                Добро пожаловать в моё портфолио.
-            <section id="gallery2d" class="gallery">
-                <h2>2D работы с использованием 3D</h2>
-                <div class="gallery-grid">
-                    <img src="images/house inside.jpg " alt="2D работа 1">
-                    <img src="images/house.jpg" alt="2D работа 2">
-                    <img src="images/mashroom.jpg" alt="2D работа 3">
-                    <img src="images/tree.jpg" alt="2D работа 4">
+            <h2>Привет! Я художница!</h2>
+            <p>Я моделирую в 3D, затем делаю рендер в 2D. А также имею опыт работы с иллюстрированием и версткой книг.
+                Добро пожаловать в моё портфолио.</p>
+        </section>
+
+        <section id="gallery2d" class="gallery">
+            <h2>2D работы с использованием 3D</h2>
+            <div class="gallery-grid">
+                <img src="images/house inside.jpg" alt="2D работа 1">
+                <img src="images/house.jpg" alt="2D работа 2">
+                <img src="images/mashroom.jpg" alt="2D работа 3">
+                <img src="images/tree.jpg" alt="2D работа 4">
+            </div>
+        </section>
+
+        <!-- мои сказки -->
+        <section id="books" class="books">
+            <h2>Работа с версткой и иллюстрациями для сказок авторства Натальи Юрьевны Фершуковой</h2>
+            <div class="books-grid">
+                <div class="book-card" data-book="1">
+                    <img src="images/Светлячок1.jpg" alt="Обложка книги 1">
+                    <h3>О Светлячке, его маленьком фонарике и большой душе</h3>
                 </div>
-            </section>
-            <section id="contacts" class="contacts">
+                <div class="book-card" data-book="2">
+                    <img src="images/Листик2.jpg" alt="Обложка книги 2">
+                    <h3>Путешествие Листика</h3>
+                </div>
+                <div class="book-card" data-book="3">
+                    <img src="images/Лови момент3.jpg" alt="Обложка книги 3">
+                    <h3>Лови момент — раскраска-антистресс</h3>
+                </div>
+                <div class="book-card" data-book="4">
+                    <img src="images/Розовый куст и амфора4.png" alt="Обложка книги 4">
+                    <h3>Розовый куст и амфора</h3>
+                </div>
+                <div class="book-card" data-book="5">
+                    <img src="images/Улитка.jpg" alt="Обложка книги 5">
+                    <h3>Улитка</h3>
+                </div>
+                <div class="book-card" data-book="6">
+                    <img src="images/В процессе5.jpg" alt="Обложка книги 6">
+                    <h3>Сказка о любви</h3>
+                </div>
+            </div>
+        </section>
 
-
-                <!--мои сказки-->
-                <section id="books" class="books">
-                    <h2>Работа с версткой и иллюстрациями для сказок авторства Натальи Юрьевны Фершуковой</h2>
-                    <div class="books-grid">
-                        <div class="book-card" data-book="1">
-                            <img src="images/Светлячок1.jpg" alt="Обложка книги 1">
-                            <h3>О Светлячке, его маленьком фонарике и большой душе</h3>
-                        </div>
-                        <div class="book-card" data-book="2">
-                            <img src="images/Листик2.jpg" alt="Обложка книги 2">
-                            <h3>Путешествие Листика</h3>
-                        </div>
-                        <div class="book-card" data-book="3">
-                            <img src="images/Лови момент3.jpg" alt="Обложка книги 3">
-                            <h3>Лови момент — раскраска-антистресс</h3>
-                        </div>
-                        <div class="book-card" data-book="4">
-                            <img src="images/Розовый куст и амфора4.png" alt="Обложка книги 4">
-                            <h3>Розовый куст и амфора</h3>
-                        </div>
-                        <div class="book-card" data-book="5">
-                            <img src="images/Улитка.jpg" alt="Обложка книги 6">
-                            <h3>Улитка</h3>
-                        </div>
-                        <div class="book-card" data-book="6">
-                            <img src="images/В процессе5.jpg" alt="Обложка книги 5">
-                            <h3>Сказка о любви</h3>
-                        </div>
-                    </div>
-                    <section id="contacts" class="contacts">
-                        <h2>Контакты</h2>
-                        <p>Email: nastya.voronova.2016@mail.ru</p>
-                        <p>Telegram: @Anastasia_a14</p>
-                    </section>
+        <!-- контакты -->
+        <section id="contacts" class="contacts">
+            <h2>Контакты</h2>
+            <p>Email: nastya.voronova.2016@mail.ru</p>
+            <p>Telegram: @Anastasia_a14</p>
+            <p>ArtStation: <a href="https://www.artstation.com/user-691947" target="_blank"
+                    style="color: white;">artstation.com/user-691947</a></p>
+        </section>
     </main>
 
     <footer>
         <p>© 2026 Анастасия Воронова. Все права защищены.</p>
     </footer>
-    <!-- Модальное окно -->
+
+    <!-- Модальное окно для картинок -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <img id="modal-img" src="" alt="Увеличенное изображение">
+            <button id="prevImgBtn" class="modal-nav prev">←</button>
+            <button id="nextImgBtn" class="modal-nav next">→</button>
         </div>
     </div>
 
-    <!--ДЖАВА-->
+    <!-- окошко для описания книги -->
+    <div id="bookModal" class="book-modal">
+        <div class="book-modal-content">
+            <span class="book-close">&times;</span>
+            <div class="book-modal-body">
+                <img id="bookCover" src="" alt="Обложка">
+                <div class="book-info">
+                    <h2 id="bookTitle"></h2>
+                    <p id="bookDescription"></p>
+                </div>
+            </div>
+            <div class="book-nav">
+                <button id="prevBookBtn" class="book-nav-btn">← Предыдущая</button>
+                <button id="nextBookBtn" class="book-nav-btn">Следующая →</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        //Находим все картинки в галерее
+        // ГАЛЕРЕЯ (с листанием) 
         const images = document.querySelectorAll('.gallery-grid img');
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modal-img');
         const closeBtn = document.querySelector('.close');
+        const prevBtn = document.getElementById('prevImgBtn');
+        const nextBtn = document.getElementById('nextImgBtn');
 
-        //При клике на картинку — открываем окно
-        images.forEach(img => {
+        let currentIndex = 0;
+
+        function showImage(index) {
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+            currentIndex = index;
+            modalImg.src = images[currentIndex].src;
+        }
+
+        images.forEach((img, idx) => {
             img.addEventListener('click', () => {
+                currentIndex = idx;
+                showImage(currentIndex);
                 modal.style.display = 'flex';
-                modalImg.src = img.src;
             });
         });
 
-        // При клике на крестик или фон — закрываем
         closeBtn.addEventListener('click', () => {
             modal.style.display = 'none';
         });
@@ -110,28 +145,18 @@
                 modal.style.display = 'none';
             }
         });
-    </script>
 
-    <!--окошко для описания книги -->
-    <div id="bookModal" class="book-modal">
-        <div class="book-modal-content">
-            <span class="book-close">&times;</span>
-            <div class="book-modal-body">
-                <img id="bookCover" src="" alt="Обложка">
-                <div class="book-info">
-                    <h2 id="bookTitle"></h2>
-                    <p id="bookDescription"></p>
-                    <h4>Иллюстрации из книги:</h4>
-                    <div class="book-illustrations" id="bookIllustrations"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex - 1);
+        });
 
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+        });
 
-
-    <script>
-        // ДАННЫЕ О КНИГАХ — ЗАМЕНИ НА СВОИ
+        // КНИГИ (с листанием) 
         const books = {
             1: {
                 title: "О Светлячке, его маленьком фонарике и большой душе",
@@ -160,20 +185,41 @@
             },
             6: {
                 title: "Сказка о любви",
-                desc: "Сказка о девушке которая узнает что такое любовь.",
+                desc: "Сказка о девушке, которая узнаёт, что такое любовь.",
                 cover: "images/В процессе5.jpg"
             }
         };
 
-        // ЭТОТ КОД НЕ ТРОГАть -ОН РАБОТАЕТ
+        let currentBookId = 1;
+        const totalBooks = Object.keys(books).length;
+
+        function showBook(id) {
+            const book = books[id];
+            if (!book) return;
+            document.getElementById('bookTitle').innerText = book.title;
+            document.getElementById('bookDescription').innerText = book.desc;
+            document.getElementById('bookCover').src = book.cover;
+            currentBookId = id;
+        }
+
+        function nextBook() {
+            let newId = currentBookId + 1;
+            if (newId > totalBooks) newId = 1;
+            showBook(newId);
+        }
+
+        function prevBook() {
+            let newId = currentBookId - 1;
+            if (newId < 1) newId = totalBooks;
+            showBook(newId);
+        }
+
         document.querySelectorAll('.book-card').forEach(card => {
             card.onclick = () => {
-                let id = card.getAttribute('data-book');
-                document.getElementById('bookTitle').innerText = books[id].title;
-                document.getElementById('bookDescription').innerText = books[id].desc;
-                document.getElementById('bookCover').src = books[id].cover;
+                let id = parseInt(card.getAttribute('data-book'));
+                showBook(id);
                 document.getElementById('bookModal').style.display = 'flex';
-            }
+            };
         });
 
         document.querySelector('.book-close').onclick = () => {
@@ -186,8 +232,54 @@
             }
         };
 
-    </script>
+        document.getElementById('prevBookBtn').onclick = (e) => {
+            e.stopPropagation();
+            prevBook();
+        };
+        document.getElementById('nextBookBtn').onclick = (e) => {
+            e.stopPropagation();
+            nextBook();
+        };
 
+        // КНОПКА НАВЕРХ" 
+        const upButton = document.createElement('button');
+        upButton.textContent = '↑';
+        upButton.setAttribute('aria-label', 'Наверх');
+        upButton.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: rgb(160, 100, 60);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 28px;
+            cursor: pointer;
+            display: none;
+            z-index: 10000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        `;
+
+        upButton.addEventListener('mouseenter', () => {
+            upButton.style.backgroundColor = 'rgb(193, 153, 109)';
+        });
+        upButton.addEventListener('mouseleave', () => {
+            upButton.style.backgroundColor = 'rgb(160, 100, 60)';
+        });
+
+        document.body.appendChild(upButton);
+
+        window.addEventListener('scroll', () => {
+            upButton.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        upButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 
 </html>
